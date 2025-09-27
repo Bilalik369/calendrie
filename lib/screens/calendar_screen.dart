@@ -22,6 +22,18 @@ class _CalendarScreenState extends State<CalendarScreen> {
   final Map<String, Set<int>> selectedDaysByMonthKey = {};
   final Map<String, Set<int>> selectedShiftsByDateKey = {};
 
+  @override
+  void initState() {
+    super.initState();
+
+    CalendarService.ensureMonthDaysInitialized(
+      currentMonth.year, 
+      currentMonth.month, 
+      selectedDaysByMonthKey, 
+      selectedShiftsByDateKey
+    );
+  }
+
   void _toggleMonth(int month) {
     setState(() {
       if (selectedMonths.contains(month)) {
@@ -160,7 +172,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
         selectedDaysByMonthKey[mKey] = monthDays;
       }
       final String dKey = CalendarService.dateKey(DateTime(year, month, day));
-      selectedShiftsByDateKey[dKey] = {0, 1, 2};
+      
+      if (!selectedShiftsByDateKey.containsKey(dKey)) {
+        selectedShiftsByDateKey[dKey] = {0, 1, 2};
+      }
     });
     _editShiftsForDay(day);
   }

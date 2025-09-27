@@ -133,19 +133,23 @@ class CalendarWidget extends StatelessWidget {
                       child: Container(
                         height: 40,
                         margin: const EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                          color: isSelected 
-                            ? (hasShifts ? Colors.blue.withOpacity(0.8) : Colors.blue.withOpacity(0.3))
-                            : Colors.transparent,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color: isSelected ? Colors.blue : Colors.grey.withOpacity(0.3),
-                            width: isSelected ? 2 : 1,
-                          ),
-                        ),
-                        child: Stack(
-                          children: [
-                            Center(
+                        child: Center(
+                          child: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              color: isSelected 
+                                ? (hasShifts ? const Color(0xFF2196F3) : const Color(0xFF2196F3))
+                                : Colors.transparent,
+                              shape: BoxShape.circle,
+                              border: isSelected 
+                                ? null 
+                                : Border.all(
+                                    color: Colors.grey.withOpacity(0.3),
+                                    width: 1,
+                                  ),
+                            ),
+                            child: Center(
                               child: Text(
                                 dayNumber.toString(),
                                 style: TextStyle(
@@ -155,20 +159,7 @@ class CalendarWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            if (hasShifts)
-                              Positioned(
-                                top: 2,
-                                right: 2,
-                                child: Container(
-                                  width: 6,
-                                  height: 6,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                              ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
