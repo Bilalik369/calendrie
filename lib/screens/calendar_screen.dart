@@ -3,6 +3,7 @@ import '../models/calendar_models.dart';
 import '../services/calendar_service.dart';
 import '../widgets/month_selector_widget.dart';
 import '../widgets/calendar_widget.dart';
+import 'notifications_screen.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({Key? key}) : super(key: key);
@@ -33,7 +34,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
       selectedShiftsByDateKey
     );
   }
-
   void _toggleMonth(int month) {
     setState(() {
       if (selectedMonths.contains(month)) {
@@ -172,9 +172,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
         selectedDaysByMonthKey[mKey] = monthDays;
       }
       final String dKey = CalendarService.dateKey(DateTime(year, month, day));
-      
+    
       if (!selectedShiftsByDateKey.containsKey(dKey)) {
-        selectedShiftsByDateKey[dKey] = {0, 1, 2};
+      selectedShiftsByDateKey[dKey] = {0, 1, 2};
       }
     });
     _editShiftsForDay(day);
@@ -211,6 +211,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
           onPressed: () {},
         ),
+      
+
+      
         title: const Text(
           'Calendrier',
           style: TextStyle(

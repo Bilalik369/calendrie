@@ -18,12 +18,12 @@ class CalendarService {
     final String key = monthKey(year, month);
     if (!selectedDaysByMonthKey.containsKey(key)) {
       final int daysInMonth = DateTime(year, month + 1, 0).day;
-     
+      // Initialize with all days selected by default
       selectedDaysByMonthKey[key] = {
         for (int d = 1; d <= daysInMonth; d++) d
       };
       
-   
+      // Initialize all days with default shifts
       for (int d = 1; d <= daysInMonth; d++) {
         final String dKey = dateKey(DateTime(year, month, d));
         selectedShiftsByDateKey[dKey] = {0, 1, 2};
