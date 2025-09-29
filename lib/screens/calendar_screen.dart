@@ -212,8 +212,19 @@ class _CalendarScreenState extends State<CalendarScreen> {
           onPressed: () {},
         ),
       
+  actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications_outlined, color: Colors.black, size: 24),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const NotificationsScreen(),
+                ),
+              );
+            },
+          ),
+        ],
 
-      
         title: const Text(
           'Calendrier',
           style: TextStyle(

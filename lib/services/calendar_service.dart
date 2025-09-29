@@ -23,7 +23,7 @@ class CalendarService {
         for (int d = 1; d <= daysInMonth; d++) d
       };
       
-      // Initialize all days with default shifts
+    
       for (int d = 1; d <= daysInMonth; d++) {
         final String dKey = dateKey(DateTime(year, month, d));
         selectedShiftsByDateKey[dKey] = {0, 1, 2};
